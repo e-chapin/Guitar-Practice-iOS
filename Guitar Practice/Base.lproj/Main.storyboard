@@ -58,7 +58,7 @@
                             <outlet property="delegate" destination="q5Y-8U-Hf9" id="eFt-dt-z3L"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Topics" image="list.bullet" catalog="system" landscapeImage="I" id="Azw-9M-hfm"/>
+                    <tabBarItem key="tabBarItem" title="Topics" image="list.bullet" catalog="system" id="Azw-9M-hfm"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XYm-ga-UTm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -66,7 +66,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="I" width="16" height="16"/>
         <image name="list.bullet" catalog="system" width="64" height="44"/>
     </resources>
 </document>
