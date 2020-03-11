@@ -10,12 +10,13 @@
 		DFE56A472418842D00CF41AA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE56A462418842D00CF41AA /* AppDelegate.swift */; };
 		DFE56A492418842D00CF41AA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE56A482418842D00CF41AA /* SceneDelegate.swift */; };
 		DFE56A4B2418842D00CF41AA /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE56A4A2418842D00CF41AA /* FirstViewController.swift */; };
-		DFE56A4D2418842D00CF41AA /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE56A4C2418842D00CF41AA /* SecondViewController.swift */; };
 		DFE56A502418842D00CF41AA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DFE56A4E2418842D00CF41AA /* Main.storyboard */; };
 		DFE56A522418842E00CF41AA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DFE56A512418842E00CF41AA /* Assets.xcassets */; };
 		DFE56A552418842E00CF41AA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DFE56A532418842E00CF41AA /* LaunchScreen.storyboard */; };
 		DFE56A602418842E00CF41AA /* Guitar_PracticeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE56A5F2418842E00CF41AA /* Guitar_PracticeTests.swift */; };
 		DFE56A6B2418842E00CF41AA /* Guitar_PracticeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE56A6A2418842E00CF41AA /* Guitar_PracticeUITests.swift */; };
+		DFE56A7B24188AD600CF41AA /* PracticeItemsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE56A7A24188AD600CF41AA /* PracticeItemsTableViewController.swift */; };
+		DFE56A7D24188C4800CF41AA /* PracticeItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE56A7C24188C4800CF41AA /* PracticeItemTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,7 +41,6 @@
 		DFE56A462418842D00CF41AA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DFE56A482418842D00CF41AA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		DFE56A4A2418842D00CF41AA /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
-		DFE56A4C2418842D00CF41AA /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		DFE56A4F2418842D00CF41AA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		DFE56A512418842E00CF41AA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DFE56A542418842E00CF41AA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -51,6 +51,8 @@
 		DFE56A662418842E00CF41AA /* Guitar PracticeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Guitar PracticeUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DFE56A6A2418842E00CF41AA /* Guitar_PracticeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Guitar_PracticeUITests.swift; sourceTree = "<group>"; };
 		DFE56A6C2418842E00CF41AA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DFE56A7A24188AD600CF41AA /* PracticeItemsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeItemsTableViewController.swift; sourceTree = "<group>"; };
+		DFE56A7C24188C4800CF41AA /* PracticeItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeItemTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,7 +106,8 @@
 				DFE56A462418842D00CF41AA /* AppDelegate.swift */,
 				DFE56A482418842D00CF41AA /* SceneDelegate.swift */,
 				DFE56A4A2418842D00CF41AA /* FirstViewController.swift */,
-				DFE56A4C2418842D00CF41AA /* SecondViewController.swift */,
+				DFE56A7A24188AD600CF41AA /* PracticeItemsTableViewController.swift */,
+				DFE56A7C24188C4800CF41AA /* PracticeItemTableViewCell.swift */,
 				DFE56A4E2418842D00CF41AA /* Main.storyboard */,
 				DFE56A512418842E00CF41AA /* Assets.xcassets */,
 				DFE56A532418842E00CF41AA /* LaunchScreen.storyboard */,
@@ -262,8 +265,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DFE56A4D2418842D00CF41AA /* SecondViewController.swift in Sources */,
+				DFE56A7D24188C4800CF41AA /* PracticeItemTableViewCell.swift in Sources */,
 				DFE56A4B2418842D00CF41AA /* FirstViewController.swift in Sources */,
+				DFE56A7B24188AD600CF41AA /* PracticeItemsTableViewController.swift in Sources */,
 				DFE56A472418842D00CF41AA /* AppDelegate.swift in Sources */,
 				DFE56A492418842D00CF41AA /* SceneDelegate.swift in Sources */,
 			);

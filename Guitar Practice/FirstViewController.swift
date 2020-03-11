@@ -9,12 +9,13 @@
 import UIKit
 
 class FirstViewController: UIViewController {
-
+    
+    @IBOutlet weak var table: PracticeItemsTableViewController!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        table = PracticeItemsTableViewController()
         // Do any additional setup after loading the view.
     }
-
-
 }
 
