@@ -10,15 +10,30 @@ import UIKit
 
 class PracticeItemsTableViewController: UITableViewController {
     
-    var items = [String]()
+    var items = [PracticeItem]()
+    
+    // MARK: Actions
+    @IBAction func unwindToItemList(sender: UIStoryboardSegue) {
+        if let sourceViewController = sender.source as? PracticeItemViewController, let practiceItem = sourceViewController.practiceItem {
+            let newIndexPath = IndexPath(row: items.count, section: 0)
+            items.append(practiceItem)
+            tableView.insertRows(at: [newIndexPath], with: .automatic)
+        }
+    }
     
     // MARK: Private functions
     
     private func loadSampleItems(){
         
-        let item1 = "Minor Pentatonic Scales"
-        let item2 = "Major Pentatonic Scales"
-        let item3 = "Backing Track Improv"
+        guard let item1 = PracticeItem(name: "Minor Pentatonic Scales") else{
+            fatalError("Unable to instantiate item1")
+        }
+        guard let item2 = PracticeItem(name: "Major Pentatonic Scales") else{
+                   fatalError("Unable to instantiate item2")
+               }
+        guard let item3 = PracticeItem(name: "Backing Track Improv") else{
+                   fatalError("Unable to instantiate item3")
+               }
         
         items += [item1, item2, item3]
         
@@ -59,7 +74,7 @@ class PracticeItemsTableViewController: UITableViewController {
         // Fetches the appropriate meal for the data source layout.
         let item = items[indexPath.row]
 
-        cell.itemLabel.text = item
+        cell.itemLabel.text = item.name
 
         return cell
     }

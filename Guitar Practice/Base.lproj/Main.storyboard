@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -16,12 +17,12 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="q5Y-8U-Hf9" kind="relationship" relationship="viewControllers" id="fE3-kl-bSJ"/>
+                        <segue destination="awQ-VU-K6S" kind="relationship" relationship="viewControllers" id="fE3-kl-bSJ"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iF7-F4-Zyh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2865" y="-800"/>
+            <point key="canvasLocation" x="-2887" y="-800"/>
         </scene>
         <!--Topics-->
         <scene sceneID="LgW-gv-tBC">
@@ -58,11 +59,84 @@
                             <outlet property="delegate" destination="q5Y-8U-Hf9" id="eFt-dt-z3L"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Topics" image="list.bullet" catalog="system" id="Azw-9M-hfm"/>
+                    <navigationItem key="navigationItem" title="Practice Items" id="KZK-ro-Hq0">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="pfP-it-ImS">
+                            <connections>
+                                <segue destination="cXB-fL-rIH" kind="show" id="BES-j9-yBa"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XYm-ga-UTm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1994" y="-800"/>
+            <point key="canvasLocation" x="-1409" y="-800"/>
+        </scene>
+        <!--Practice Item View Controller-->
+        <scene sceneID="ehs-1Z-MT3">
+            <objects>
+                <viewController id="cXB-fL-rIH" customClass="PracticeItemViewController" customModule="Guitar_Practice" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="xjY-6v-Y1e">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Add a new item" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lCW-QQ-KeF">
+                                <rect key="frame" x="65" y="171" width="237" height="46"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2au-L4-wTN">
+                                <rect key="frame" x="65" y="225" width="273" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="1th-Ca-yCn"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="dgJ-Qb-Xqw">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="XOH-vr-8wj">
+                            <connections>
+                                <action selector="cancel:" destination="cXB-fL-rIH" id="kCK-zt-AxY"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="dSm-wt-bLz">
+                            <connections>
+                                <segue destination="Ur3-y7-iTE" kind="unwind" unwindAction="unwindToItemListWithSender:" id="ytr-Md-B2V"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="PracticeItemInput" destination="2au-L4-wTN" id="LNH-SC-5SD"/>
+                        <outlet property="PracticeItemLabel" destination="lCW-QQ-KeF" id="92x-Gt-fjd"/>
+                        <outlet property="saveButton" destination="dSm-wt-bLz" id="OYF-oh-lbR"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1Cf-bk-Hfm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="Ur3-y7-iTE" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="-500.00000000000006" y="-800.22321428571422"/>
+        </scene>
+        <!--Topics-->
+        <scene sceneID="3PN-7U-Wm2">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="awQ-VU-K6S" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Topics" image="list.bullet" catalog="system" id="Azw-9M-hfm"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="4xD-lc-Mq9">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="q5Y-8U-Hf9" kind="relationship" relationship="rootViewController" id="0GL-dC-Lfl"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bNt-ys-500" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2220" y="-800"/>
         </scene>
     </scenes>
     <resources>

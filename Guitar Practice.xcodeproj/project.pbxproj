@@ -16,6 +16,8 @@
 		DFE56A6B2418842E00CF41AA /* Guitar_PracticeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE56A6A2418842E00CF41AA /* Guitar_PracticeUITests.swift */; };
 		DFE56A7B24188AD600CF41AA /* PracticeItemsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE56A7A24188AD600CF41AA /* PracticeItemsTableViewController.swift */; };
 		DFE56A7D24188C4800CF41AA /* PracticeItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE56A7C24188C4800CF41AA /* PracticeItemTableViewCell.swift */; };
+		DFEACD7224200EFB00568E5F /* PracticeItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFEACD7124200EFB00568E5F /* PracticeItemViewController.swift */; };
+		DFEACD742420217E00568E5F /* PracticeItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFEACD732420217E00568E5F /* PracticeItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +53,8 @@
 		DFE56A6C2418842E00CF41AA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DFE56A7A24188AD600CF41AA /* PracticeItemsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeItemsTableViewController.swift; sourceTree = "<group>"; };
 		DFE56A7C24188C4800CF41AA /* PracticeItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeItemTableViewCell.swift; sourceTree = "<group>"; };
+		DFEACD7124200EFB00568E5F /* PracticeItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeItemViewController.swift; sourceTree = "<group>"; };
+		DFEACD732420217E00568E5F /* PracticeItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,8 +107,10 @@
 			children = (
 				DFE56A462418842D00CF41AA /* AppDelegate.swift */,
 				DFE56A482418842D00CF41AA /* SceneDelegate.swift */,
+				DFEACD732420217E00568E5F /* PracticeItem.swift */,
 				DFE56A7A24188AD600CF41AA /* PracticeItemsTableViewController.swift */,
 				DFE56A7C24188C4800CF41AA /* PracticeItemTableViewCell.swift */,
+				DFEACD7124200EFB00568E5F /* PracticeItemViewController.swift */,
 				DFE56A4E2418842D00CF41AA /* Main.storyboard */,
 				DFE56A512418842E00CF41AA /* Assets.xcassets */,
 				DFE56A532418842E00CF41AA /* LaunchScreen.storyboard */,
@@ -266,6 +272,8 @@
 				DFE56A7B24188AD600CF41AA /* PracticeItemsTableViewController.swift in Sources */,
 				DFE56A472418842D00CF41AA /* AppDelegate.swift in Sources */,
 				DFE56A492418842D00CF41AA /* SceneDelegate.swift in Sources */,
+				DFEACD7224200EFB00568E5F /* PracticeItemViewController.swift in Sources */,
+				DFEACD742420217E00568E5F /* PracticeItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
