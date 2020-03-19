@@ -21,7 +21,18 @@ class PracticeItemViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func cancel(_ sender: UIBarButtonItem) {
         os_log("cancel button was pressed", log:OSLog.default, type: .debug)
-        dismiss(animated: true, completion: nil)
+        
+        // if there is a presentingViewController, this is coming from a "present as Modal"
+        if presentingViewController != nil{
+            dismiss(animated: true, completion: nil)
+        }
+        
+        else if let owningNavigationController = navigationController{
+            owningNavigationController.popViewController(animated: true)
+        }else{
+            fatalError("The PracticeItemViewController is not inside a navigation controller")
+        }
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -63,6 +74,12 @@ class PracticeItemViewController: UIViewController, UITextFieldDelegate {
         updateSaveButtonState()
         // PracticeItemLabel.text = "Practice Item 1"
         // Do any additional setup after loading the view.
+        
+        if let practiceItem = practiceItem {
+            PracticeItemInput.text = practiceItem.name
+            PracticeItemLabel.text = practiceItem.name
+        }
+        
     }
     
     //MARK: Private Methods

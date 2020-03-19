@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import os.log
 
 class PracticeItemsTableViewController: UITableViewController {
     
@@ -15,13 +16,36 @@ class PracticeItemsTableViewController: UITableViewController {
     // MARK: Actions
     @IBAction func unwindToItemList(sender: UIStoryboardSegue) {
         if let sourceViewController = sender.source as? PracticeItemViewController, let practiceItem = sourceViewController.practiceItem {
-            let newIndexPath = IndexPath(row: items.count, section: 0)
-            items.append(practiceItem)
-            tableView.insertRows(at: [newIndexPath], with: .automatic)
+            
+            if let selectedIndexPath = tableView.indexPathForSelectedRow {
+                // update existing
+                items[selectedIndexPath.row] = practiceItem
+                tableView.reloadRows(at: [selectedIndexPath], with: .fade)
+            }else{
+                let newIndexPath = IndexPath(row: items.count, section: 0)
+                items.append(practiceItem)
+                tableView.insertRows(at: [newIndexPath], with: .automatic)
+            }
+            
+            savePracticeItems()
+            
         }
     }
     
     // MARK: Private functions
+    
+    private func savePracticeItems() {
+        let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(items, toFile: PracticeItem.ArchiveURL.path)
+        if isSuccessfulSave {
+            os_log("PracticeItems successfully saved.", log: OSLog.default, type: .debug)
+        } else {
+            os_log("Failed to save PracticeItems...", log: OSLog.default, type: .error)
+        }
+    }
+    
+    private func loadPracticeItems() -> [PracticeItem]? {
+        return NSKeyedUnarchiver.unarchiveObject(withFile: PracticeItem.ArchiveURL.path) as? [PracticeItem]
+    }
     
     private func loadSampleItems(){
         
@@ -36,13 +60,19 @@ class PracticeItemsTableViewController: UITableViewController {
                }
         
         items += [item1, item2, item3]
-        
+            
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadSampleItems()
+        navigationItem.leftBarButtonItem = editButtonItem
 
+        if let savedItems = loadPracticeItems(){
+            items = savedItems
+        }else{
+            loadSampleItems()
+        }
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -82,24 +112,26 @@ class PracticeItemsTableViewController: UITableViewController {
 
 
     
-//    // Override to support conditional editing of the table view.
-//    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-//        // Return false if you do not want the specified item to be editable.
-//        return true
-//    }
+    // Override to support conditional editing of the table view.
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        // Return false if you do not want the specified item to be editable.
+        return true
+    }
     
 
-    /*
+    
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Delete the row from the data source
+            items.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
+            savePracticeItems()
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
     }
-    */
+    
 
     /*
     // Override to support rearranging the table view.
@@ -116,14 +148,33 @@ class PracticeItemsTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        super.prepare(for: segue, sender: sender)
+        
+        switch(segue.identifier ?? ""){
+            case "AddPracticeItem":
+                os_log("Adding a new item.", log: OSLog.default, type: .debug)
+            
+            case "ShowPracticeItemDetail":
+                guard let itemDetailViewController = segue.destination as? PracticeItemViewController else{
+                        fatalError("Unexpected destination: \(segue.destination)")
+                }
+                guard let selectedItemCell = sender as? PracticeItemTableViewCell else{
+                    fatalError("Unexpected cell: \(sender)")
+                }
+                guard let indexPath = tableView.indexPath(for: selectedItemCell) else{
+                    fatalError("The selected cell is not being displayed by the table")
+                }
+                let selectedItem = items[indexPath.row]
+                itemDetailViewController.practiceItem = selectedItem
+            
+            default:
+                fatalError("Unexpected Segue Identifier; \(segue.identifier)")
+        }
     }
-    */
-
+    
 }

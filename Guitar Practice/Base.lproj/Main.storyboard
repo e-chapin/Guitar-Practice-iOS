@@ -51,6 +51,7 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="itemLabel" destination="w28-lV-ZS1" id="aQT-Mg-HnH"/>
+                                    <segue destination="cXB-fL-rIH" kind="show" identifier="ShowPracticeItemDetail" id="35W-Zu-8f5"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -62,7 +63,7 @@
                     <navigationItem key="navigationItem" title="Practice Items" id="KZK-ro-Hq0">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="pfP-it-ImS">
                             <connections>
-                                <segue destination="cXB-fL-rIH" kind="show" id="BES-j9-yBa"/>
+                                <segue destination="JTk-F5-ENy" kind="presentation" identifier="AddPracticeItem" id="BES-j9-yBa"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -117,7 +118,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Cf-bk-Hfm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="Ur3-y7-iTE" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-500.00000000000006" y="-800.22321428571422"/>
+            <point key="canvasLocation" x="410.14492753623193" y="-800.22321428571422"/>
         </scene>
         <!--Topics-->
         <scene sceneID="3PN-7U-Wm2">
@@ -138,8 +139,29 @@
             </objects>
             <point key="canvasLocation" x="-2220" y="-800"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Oyj-zw-2S5">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="JTk-F5-ENy" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="e7f-M2-Tia">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="cXB-fL-rIH" kind="relationship" relationship="rootViewController" id="mkr-4J-fvA"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="304-xq-bW5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-504" y="-384"/>
+        </scene>
     </scenes>
     <resources>
         <image name="list.bullet" catalog="system" width="64" height="44"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="35W-Zu-8f5"/>
+    </inferredMetricsTieBreakers>
 </document>
