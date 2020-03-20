@@ -9,32 +9,30 @@
 import UIKit
 import os.log
 
-class PracticeItem: NSObject, NSCoding{
+class PracticeItem: NSObject, Codable{
 
     //MARK: Properties
+    var name: String
     
-    struct PropertyKey {
-        static let name = "name"
+    enum CodingKeys: String, CodingKey {
+        case name
     }
     
     static let DocumentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!
     static let ArchiveURL = DocumentsDirectory.appendingPathComponent("PracticeItems")
     
-    //MARK: NSCoding
+    //MARK: Coding
     
-    func encode(with coder: NSCoder) {
-        coder.encode(name, forKey: PropertyKey.name)
+    func encode(to encoder: Encoder) throws {
+      var container = encoder.container(keyedBy: CodingKeys.self)
+      try container.encode(name, forKey: .name)
+    }
+
+    required init(from decoder: Decoder) throws {
+      let container = try decoder.container(keyedBy: CodingKeys.self)
+      name = try container.decode(String.self, forKey: .name)
     }
     
-    required convenience init?(coder: NSCoder) {
-        guard let name = coder.decodeObject(forKey: PropertyKey.name) as? String else{
-            os_log("unable to decode the name for a PracticeItem object", log:OSLog.default, type: .debug)
-            return nil
-        }
-        self.init(name: name)
-    }
-    
-    var name: String
     
     //MARK: Initialization
     init?(name: String) {

@@ -35,16 +35,12 @@ class PracticeItemsTableViewController: UITableViewController {
     // MARK: Private functions
     
     private func savePracticeItems() {
-        let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(items, toFile: PracticeItem.ArchiveURL.path)
-        if isSuccessfulSave {
-            os_log("PracticeItems successfully saved.", log: OSLog.default, type: .debug)
-        } else {
-            os_log("Failed to save PracticeItems...", log: OSLog.default, type: .error)
-        }
+        Storage.store(items, to: .documents, as: "practice_items.json")
     }
     
     private func loadPracticeItems() -> [PracticeItem]? {
-        return NSKeyedUnarchiver.unarchiveObject(withFile: PracticeItem.ArchiveURL.path) as? [PracticeItem]
+        let practiceItemsFromDisk = Storage.retrieve("practice_items.json", from: .documents, as: [PracticeItem].self)
+        return practiceItemsFromDisk
     }
     
     private func loadSampleItems(){
@@ -67,8 +63,11 @@ class PracticeItemsTableViewController: UITableViewController {
         super.viewDidLoad()
         navigationItem.leftBarButtonItem = editButtonItem
 
-        if let savedItems = loadPracticeItems(){
-            items = savedItems
+        
+        if Storage.fileExists("practice_items.json", in: .documents){
+            if let savedItems = loadPracticeItems(){
+                items = savedItems
+            }
         }else{
             loadSampleItems()
         }
