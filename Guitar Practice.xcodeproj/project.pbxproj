@@ -84,6 +84,49 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DF41CA5D24295B38006C21E3 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				DFEACD732420217E00568E5F /* PracticeItem.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		DF41CA5E24295B52006C21E3 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				DF41CA6124295BE6006C21E3 /* Main */,
+				DF41CA5F24295B5B006C21E3 /* PracticeItems */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		DF41CA5F24295B5B006C21E3 /* PracticeItems */ = {
+			isa = PBXGroup;
+			children = (
+				DFE56A7A24188AD600CF41AA /* PracticeItemsTableViewController.swift */,
+				DFE56A7C24188C4800CF41AA /* PracticeItemTableViewCell.swift */,
+				DFEACD7124200EFB00568E5F /* PracticeItemViewController.swift */,
+			);
+			path = PracticeItems;
+			sourceTree = "<group>";
+		};
+		DF41CA6024295B88006C21E3 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				DFEACD7524243F3300568E5F /* Storage.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		DF41CA6124295BE6006C21E3 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				DFE56A462418842D00CF41AA /* AppDelegate.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
 		DFE56A3A2418842D00CF41AA = {
 			isa = PBXGroup;
 			children = (
@@ -107,17 +150,14 @@
 		DFE56A452418842D00CF41AA /* Guitar Practice */ = {
 			isa = PBXGroup;
 			children = (
-				DFE56A462418842D00CF41AA /* AppDelegate.swift */,
+				DF41CA5E24295B52006C21E3 /* Application */,
+				DF41CA5D24295B38006C21E3 /* Models */,
+				DF41CA6024295B88006C21E3 /* Extension */,
 				DFE56A482418842D00CF41AA /* SceneDelegate.swift */,
-				DFEACD732420217E00568E5F /* PracticeItem.swift */,
-				DFE56A7A24188AD600CF41AA /* PracticeItemsTableViewController.swift */,
-				DFE56A7C24188C4800CF41AA /* PracticeItemTableViewCell.swift */,
-				DFEACD7124200EFB00568E5F /* PracticeItemViewController.swift */,
 				DFE56A4E2418842D00CF41AA /* Main.storyboard */,
 				DFE56A512418842E00CF41AA /* Assets.xcassets */,
 				DFE56A532418842E00CF41AA /* LaunchScreen.storyboard */,
 				DFE56A562418842E00CF41AA /* Info.plist */,
-				DFEACD7524243F3300568E5F /* Storage.swift */,
 			);
 			path = "Guitar Practice";
 			sourceTree = "<group>";

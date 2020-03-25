@@ -10,11 +10,14 @@ import UIKit
 import os.log
 
 
-class PracticeItemViewController: UIViewController, UITextFieldDelegate {
+class PracticeItemViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate {
 
     @IBOutlet weak var PracticeItemLabel: UILabel!
     @IBOutlet weak var saveButton: UIBarButtonItem!
     @IBOutlet weak var PracticeItemInput: UITextField!
+    @IBOutlet weak var NotesInput: UITextView!
+    @IBOutlet weak var URLInput: UITextField!
+    var placeholderLabel : UILabel!
     var practiceItem: PracticeItem?
 
     // MARK: - Navigation
@@ -45,7 +48,9 @@ class PracticeItemViewController: UIViewController, UITextFieldDelegate {
         }
         
         let name = PracticeItemInput.text ?? ""
-        practiceItem = PracticeItem(name: name)
+        let notes = NotesInput.text
+        let url = URLInput.text
+        practiceItem = PracticeItem(name: name, notes: notes, url: url)
     
     }
     
@@ -65,19 +70,41 @@ class PracticeItemViewController: UIViewController, UITextFieldDelegate {
         navigationItem.title = textField.text
     }
     
+    func textViewDidChange(_ textView: UITextView) {
+        placeholderLabel.isHidden = !textView.text.isEmpty
+    }
+    
     
     //MARK: Actions
     
     override func viewDidLoad() {
         super.viewDidLoad()
         PracticeItemInput.delegate = self
+        
+        // setup the NotesInput TextView
+        NotesInput.delegate = self
+        NotesInput.layer.borderWidth = 1
+        NotesInput.layer.borderColor = UIColor.lightGray.cgColor
+        placeholderLabel = UILabel()
+        placeholderLabel.text = "Notes"
+        placeholderLabel.font = UIFont.systemFont(ofSize: (NotesInput.font?.pointSize)!)
+        placeholderLabel.sizeToFit()
+        NotesInput.addSubview(placeholderLabel)
+        placeholderLabel.frame.origin = CGPoint(x: 5, y: (NotesInput.font?.pointSize)! / 2)
+        placeholderLabel.textColor = UIColor.lightGray
+        placeholderLabel.isHidden = !NotesInput.text.isEmpty
+        
         updateSaveButtonState()
         // PracticeItemLabel.text = "Practice Item 1"
         // Do any additional setup after loading the view.
         
         if let practiceItem = practiceItem {
             PracticeItemInput.text = practiceItem.name
-            PracticeItemLabel.text = practiceItem.name
+            PracticeItemLabel.text = "Edit " + practiceItem.name
+            navigationItem.title = practiceItem.name
+            NotesInput.text = practiceItem.notes
+            NotesInput.textColor = UIColor.black
+            URLInput.text = practiceItem.url
         }
         
     }

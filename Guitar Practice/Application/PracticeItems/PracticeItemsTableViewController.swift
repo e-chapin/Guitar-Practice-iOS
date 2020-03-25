@@ -45,13 +45,13 @@ class PracticeItemsTableViewController: UITableViewController {
     
     private func loadSampleItems(){
         
-        guard let item1 = PracticeItem(name: "Minor Pentatonic Scales") else{
+        guard let item1 = PracticeItem(name: "Minor Pentatonic Scales", notes: nil, url: nil) else{
             fatalError("Unable to instantiate item1")
         }
-        guard let item2 = PracticeItem(name: "Major Pentatonic Scales") else{
+        guard let item2 = PracticeItem(name: "Major Pentatonic Scales", notes: nil, url: nil) else{
                    fatalError("Unable to instantiate item2")
                }
-        guard let item3 = PracticeItem(name: "Backing Track Improv") else{
+        guard let item3 = PracticeItem(name: "Backing Track Improv", notes: nil, url: nil) else{
                    fatalError("Unable to instantiate item3")
                }
         
